@@ -1,0 +1,69 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXGroup section */
+		CAF1441726FDC34400AD48E2 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		CAF1441826FDC34400AD48E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = CAF1441B26FDC34400AD48E2 /* Build configuration list for PBXProject "RadeonSensor" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAF1441726FDC34400AD48E2;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		CAF1441C26FDC34400AD48E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		CAF1441D26FDC34400AD48E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAF1441B26FDC34400AD48E2 /* Build configuration list for PBXProject "RadeonSensor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF1441C26FDC34400AD48E2 /* Debug */,
+				CAF1441D26FDC34400AD48E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAF1441826FDC34400AD48E2 /* Project object */;
+}
