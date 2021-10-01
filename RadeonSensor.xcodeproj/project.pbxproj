@@ -6,21 +6,202 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CA1CAE4226FDD7C1004D7E9A /* RadeonSensorUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */; };
+		CA1CAE4326FDD7C1004D7E9A /* RadeonSensorUserClient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */; };
+		CA1CAE4726FDE16A004D7E9A /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4426FDE049004D7E9A /* Headers */; };
+		CA1CAE4A26FDE45B004D7E9A /* RadeonSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4826FDE45B004D7E9A /* RadeonSensor.cpp */; };
+		CA1CAE4F26FDE87A004D7E9A /* ATICard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4D26FDE87A004D7E9A /* ATICard.cpp */; };
+		CA1CAE5226FDE917004D7E9A /* radeon_chipsets.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE5126FDE8CD004D7E9A /* radeon_chipsets.h */; };
+		CA1CAE5326FDE9AC004D7E9A /* ATICard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4E26FDE87A004D7E9A /* ATICard.hpp */; };
+		CA1CAE5526FDEA03004D7E9A /* radeon_chipinfo_gen.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE5426FDE9F6004D7E9A /* radeon_chipinfo_gen.h */; };
+		CA1CAE5726FDEA60004D7E9A /* atombios.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE5626FDEA44004D7E9A /* atombios.h */; };
+		CA1CAED826FDF91A004D7E9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAED726FDF91A004D7E9A /* AppDelegate.swift */; };
+		CA1CAEDA26FDF925004D7E9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAED926FDF924004D7E9A /* ViewController.swift */; };
+		CA1CAEDC26FDF930004D7E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1CAEDB26FDF930004D7E9A /* Assets.xcassets */; };
+		CA1CAEE126FDF974004D7E9A /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAEE026FDF973004D7E9A /* StatusBarController.swift */; };
+		CA7649362706F9B0001C109A /* RadeonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7649352706F9B0001C109A /* RadeonModel.swift */; };
+		CA764938270705DC001C109A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA764937270705DC001C109A /* Info.plist */; };
+		CA76493A27070759001C109A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76493927070759001C109A /* main.swift */; };
+		CA7BCA8F2707110500B0DD4D /* Lilu.kext in Resources */ = {isa = PBXBuildFile; fileRef = CA7BCA8E2707110500B0DD4D /* Lilu.kext */; };
+		CAC8041A27073E920088CC04 /* RadeonSensor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CAC8041927073E920088CC04 /* RadeonSensor.hpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonSensorUserClient.cpp; sourceTree = "<group>"; };
+		CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RadeonSensorUserClient.hpp; sourceTree = "<group>"; };
+		CA1CAE4426FDE049004D7E9A /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
+		CA1CAE4826FDE45B004D7E9A /* RadeonSensor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonSensor.cpp; sourceTree = "<group>"; };
+		CA1CAE4D26FDE87A004D7E9A /* ATICard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ATICard.cpp; sourceTree = "<group>"; };
+		CA1CAE4E26FDE87A004D7E9A /* ATICard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ATICard.hpp; sourceTree = "<group>"; };
+		CA1CAE5126FDE8CD004D7E9A /* radeon_chipsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = radeon_chipsets.h; sourceTree = "<group>"; };
+		CA1CAE5426FDE9F6004D7E9A /* radeon_chipinfo_gen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = radeon_chipinfo_gen.h; sourceTree = "<group>"; };
+		CA1CAE5626FDEA44004D7E9A /* atombios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = atombios.h; sourceTree = "<group>"; };
+		CA1CAE5826FDF2FD004D7E9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA1CAEC826FDF8FE004D7E9A /* RadeonGadget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadeonGadget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA1CAED726FDF91A004D7E9A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CA1CAED926FDF924004D7E9A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CA1CAEDB26FDF930004D7E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA1CAEDF26FDF94C004D7E9A /* RadeonGadget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RadeonGadget.entitlements; sourceTree = "<group>"; };
+		CA1CAEE026FDF973004D7E9A /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		CA7649352706F9B0001C109A /* RadeonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadeonModel.swift; sourceTree = "<group>"; };
+		CA764937270705DC001C109A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA76493927070759001C109A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CA7BCA8E2707110500B0DD4D /* Lilu.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; path = Lilu.kext; sourceTree = "<group>"; };
+		CAC8041927073E920088CC04 /* RadeonSensor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RadeonSensor.hpp; sourceTree = "<group>"; };
+		CAED2D6D26FDC46500F319D5 /* RadeonSensor.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadeonSensor.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA1CAEC526FDF8FE004D7E9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAED2D6A26FDC46500F319D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
+		CA1CAE4C26FDE861004D7E9A /* RadeonMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				CA1CAE4E26FDE87A004D7E9A /* ATICard.hpp */,
+				CA1CAE4D26FDE87A004D7E9A /* ATICard.cpp */,
+				CA1CAE5126FDE8CD004D7E9A /* radeon_chipsets.h */,
+				CA1CAE5426FDE9F6004D7E9A /* radeon_chipinfo_gen.h */,
+				CA1CAE5626FDEA44004D7E9A /* atombios.h */,
+			);
+			path = RadeonMonitor;
+			sourceTree = "<group>";
+		};
+		CA1CAEC926FDF8FE004D7E9A /* RadeonGadget */ = {
+			isa = PBXGroup;
+			children = (
+				CA764937270705DC001C109A /* Info.plist */,
+				CA1CAEE026FDF973004D7E9A /* StatusBarController.swift */,
+				CA1CAEDF26FDF94C004D7E9A /* RadeonGadget.entitlements */,
+				CA1CAED726FDF91A004D7E9A /* AppDelegate.swift */,
+				CA1CAED926FDF924004D7E9A /* ViewController.swift */,
+				CA1CAEDB26FDF930004D7E9A /* Assets.xcassets */,
+				CA7649352706F9B0001C109A /* RadeonModel.swift */,
+				CA76493927070759001C109A /* main.swift */,
+			);
+			path = RadeonGadget;
+			sourceTree = "<group>";
+		};
+		CAED2D6E26FDC46500F319D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAED2D6D26FDC46500F319D5 /* RadeonSensor.kext */,
+				CA1CAEC826FDF8FE004D7E9A /* RadeonGadget.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAED2D6F26FDC46500F319D5 /* RadeonSensor */ = {
+			isa = PBXGroup;
+			children = (
+				CA1CAE4C26FDE861004D7E9A /* RadeonMonitor */,
+				CA1CAE4426FDE049004D7E9A /* Headers */,
+				CAC8041927073E920088CC04 /* RadeonSensor.hpp */,
+				CA1CAE4826FDE45B004D7E9A /* RadeonSensor.cpp */,
+				CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */,
+				CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */,
+				CA1CAE5826FDF2FD004D7E9A /* Info.plist */,
+			);
+			path = RadeonSensor;
+			sourceTree = "<group>";
+		};
 		CAF1441726FDC34400AD48E2 = {
 			isa = PBXGroup;
 			children = (
+				CA7BCA8E2707110500B0DD4D /* Lilu.kext */,
+				CAED2D6F26FDC46500F319D5 /* RadeonSensor */,
+				CA1CAEC926FDF8FE004D7E9A /* RadeonGadget */,
+				CAED2D6E26FDC46500F319D5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CAED2D6826FDC46500F319D5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA1CAE5726FDEA60004D7E9A /* atombios.h in Headers */,
+				CAC8041A27073E920088CC04 /* RadeonSensor.hpp in Headers */,
+				CA1CAE5526FDEA03004D7E9A /* radeon_chipinfo_gen.h in Headers */,
+				CA1CAE5326FDE9AC004D7E9A /* ATICard.hpp in Headers */,
+				CA1CAE5226FDE917004D7E9A /* radeon_chipsets.h in Headers */,
+				CA1CAE4726FDE16A004D7E9A /* Headers in Headers */,
+				CA1CAE4326FDD7C1004D7E9A /* RadeonSensorUserClient.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CA1CAEC726FDF8FE004D7E9A /* RadeonGadget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA1CAED426FDF8FF004D7E9A /* Build configuration list for PBXNativeTarget "RadeonGadget" */;
+			buildPhases = (
+				CA1CAEC426FDF8FE004D7E9A /* Sources */,
+				CA1CAEC526FDF8FE004D7E9A /* Frameworks */,
+				CA1CAEC626FDF8FE004D7E9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadeonGadget;
+			productName = RadeonGadget;
+			productReference = CA1CAEC826FDF8FE004D7E9A /* RadeonGadget.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CAED2D6C26FDC46500F319D5 /* RadeonSensor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAED2D7326FDC46500F319D5 /* Build configuration list for PBXNativeTarget "RadeonSensor" */;
+			buildPhases = (
+				CAED2D6826FDC46500F319D5 /* Headers */,
+				CAED2D6926FDC46500F319D5 /* Sources */,
+				CAED2D6A26FDC46500F319D5 /* Frameworks */,
+				CAED2D6B26FDC46500F319D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadeonSensor;
+			productName = RadeonSensor;
+			productReference = CAED2D6D26FDC46500F319D5 /* RadeonSensor.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CAF1441826FDC34400AD48E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					CA1CAEC726FDF8FE004D7E9A = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					CAED2D6C26FDC46500F319D5 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
 			};
 			buildConfigurationList = CAF1441B26FDC34400AD48E2 /* Build configuration list for PBXProject "RadeonSensor" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -31,29 +212,415 @@
 				Base,
 			);
 			mainGroup = CAF1441726FDC34400AD48E2;
+			productRefGroup = CAED2D6E26FDC46500F319D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				CAED2D6C26FDC46500F319D5 /* RadeonSensor */,
+				CA1CAEC726FDF8FE004D7E9A /* RadeonGadget */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		CA1CAEC626FDF8FE004D7E9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA764938270705DC001C109A /* Info.plist in Resources */,
+				CA1CAEDC26FDF930004D7E9A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAED2D6B26FDC46500F319D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA7BCA8F2707110500B0DD4D /* Lilu.kext in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA1CAEC426FDF8FE004D7E9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA1CAEDA26FDF925004D7E9A /* ViewController.swift in Sources */,
+				CA76493A27070759001C109A /* main.swift in Sources */,
+				CA1CAEE126FDF974004D7E9A /* StatusBarController.swift in Sources */,
+				CA7649362706F9B0001C109A /* RadeonModel.swift in Sources */,
+				CA1CAED826FDF91A004D7E9A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAED2D6926FDC46500F319D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA1CAE4F26FDE87A004D7E9A /* ATICard.cpp in Sources */,
+				CA1CAE4A26FDE45B004D7E9A /* RadeonSensor.cpp in Sources */,
+				CA1CAE4226FDD7C1004D7E9A /* RadeonSensorUserClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
+		CA1CAED526FDF8FF004D7E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = RadeonGadget/RadeonGadget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = Aluveitie.RadeonGadget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CA1CAED626FDF8FF004D7E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = RadeonGadget/RadeonGadget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = Aluveitie.RadeonGadget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CAED2D7426FDC46500F319D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"MODULE_VERSION=$(MODULE_VERSION)",
+					"PRODUCT_NAME=$(PRODUCT_NAME)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
+					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+				);
+				INFOPLIST_FILE = RadeonSensor/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Aluveitie. All rights reserved.";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lilu.kext/Contents/Resources/Library";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MARKETING_VERSION = 0.1;
+				MODULE_NAME = aluveitie.RadeonSensor;
+				MODULE_START = radeonsensor_start;
+				MODULE_STOP = radeonsensor_stop;
+				MODULE_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-static";
+				PRODUCT_BUNDLE_IDENTIFIER = aluveitie.RadeonSensor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		CAED2D7526FDC46500F319D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PRODUCT_NAME=$(PRODUCT_NAME)",
+					"MODULE_VERSION=$(MODULE_VERSION)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
+					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+				);
+				INFOPLIST_FILE = RadeonSensor/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Aluveitie. All rights reserved.";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lilu.kext/Contents/Resources/Library";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MARKETING_VERSION = 0.1;
+				MODULE_NAME = aluveitie.RadeonSensor;
+				MODULE_START = radeonsensor_start;
+				MODULE_STOP = radeonsensor_stop;
+				MODULE_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-static";
+				PRODUCT_BUNDLE_IDENTIFIER = aluveitie.RadeonSensor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
 		CAF1441C26FDC34400AD48E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		CAF1441D26FDC34400AD48E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA1CAED426FDF8FF004D7E9A /* Build configuration list for PBXNativeTarget "RadeonGadget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA1CAED526FDF8FF004D7E9A /* Debug */,
+				CA1CAED626FDF8FF004D7E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAED2D7326FDC46500F319D5 /* Build configuration list for PBXNativeTarget "RadeonSensor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAED2D7426FDC46500F319D5 /* Debug */,
+				CAED2D7526FDC46500F319D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CAF1441B26FDC34400AD48E2 /* Build configuration list for PBXProject "RadeonSensor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
