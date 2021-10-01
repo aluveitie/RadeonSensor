@@ -86,11 +86,7 @@ class StatusBarController {
         statusItem.button?.wantsLayer = true
         statusItem.button?.addSubview(view)
         
-        //statusItem.button?.target = self
-        //statusItem.button?.action = #selector(itemClicked)
-        //statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
-        
-        statusItem.length = 100
+        statusItem.length = 105
         view.frame = statusItem.button!.bounds
         
         updateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
@@ -113,14 +109,4 @@ class StatusBarController {
         NSStatusBar.system.removeStatusItem(statusItem!)
         statusItem = nil
     }
-    
-//    @objc func toggleWindow(sender: AnyObject) {
-//        let mainWindow = NSApplication.shared.windows.first!
-//        if (mainWindow.isVisible) {
-//            mainWindow.close()
-//        } else {
-//            mainWindow.makeKeyAndOrderFront(nil)
-//            NSApplication.shared.activate(ignoringOtherApps: true)
-//        }
-//    }
 }

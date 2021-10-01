@@ -21,7 +21,7 @@ private:
     task_t mTask;
     
 public:
-    bool initWithTask(task_t owningTask, void *securityToken, UInt32 type, OSDictionary *properties) override;
+    virtual bool initWithTask(task_t owningTask, void *securityToken, UInt32 type, OSDictionary *properties) override;
     
     // IOUserClient methods
     virtual void stop(IOService* provider) override;

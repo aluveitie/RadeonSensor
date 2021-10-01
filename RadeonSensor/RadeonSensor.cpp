@@ -21,8 +21,6 @@ bool RadeonSensor::init(OSDictionary *dictionary){
     
     IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, dictionary);
     
-    //atiCard = new ATICard();
-    
     return true;
 }
 
@@ -30,6 +28,65 @@ void RadeonSensor::free() {
     IOLog("%s[%p]::%s()\n", getName(), this, __FUNCTION__);
         
     super::free();
+}
+
+IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
+    if (super::probe(provider, score) != this) {
+        return 0;
+    }
+    
+    bool ret = false;
+    if (OSDictionary * dictionary = serviceMatching("IOPCIDevice")) {
+        if (OSIterator * iterator = getMatchingServices(dictionary)) {
+            IOPCIDevice* device = NULL;
+            UInt32 vendor_id = 0;
+            UInt32 class_id = 0;
+            do {
+                device = OSDynamicCast(IOPCIDevice, iterator->getNextObject());
+                if (!device) {
+                    break;
+                }
+                vendor_id = 0;
+                OSData *data = OSDynamicCast(OSData, device->getProperty("vendor-id"));
+                if (data) {
+                    vendor_id = *(UInt32*)data->getBytesNoCopy();
+                } else {
+                    data = OSDynamicCast(OSData, device->getProperty("ATY,VendorID"));
+                    if (data) {
+                      vendor_id = *(UInt32*)data->getBytesNoCopy();
+                    }
+                }
+
+                device_id = 0;
+                data = OSDynamicCast(OSData, device->getProperty("device-id"));
+                if (data) {
+                    device_id = *(UInt32*)data->getBytesNoCopy();
+                }
+
+                class_id = 0;
+                data = OSDynamicCast(OSData, device->getProperty("class-code"));
+                if (data) {
+                    class_id = *(UInt32*)data->getBytesNoCopy();
+                }
+
+                if ((vendor_id==0x1002) && (class_id == 0x030000)) {
+                    InfoLog("found Radeon chip id=%x ", (unsigned int)device_id);
+                    pciCard = device;
+                    ret = true; //TODO - count a number of cards
+                    break;
+              }
+              /*else {
+               WarningLog("ATI Radeon not found!");
+               }*/
+            } while (device);
+        }
+    }
+    
+    if (ret) {
+        return this;
+    } else {
+        return 0;
+    }
 }
 
 bool RadeonSensor::start(IOService *provider) {
@@ -42,10 +99,17 @@ bool RadeonSensor::start(IOService *provider) {
     
     registerService();
     
-    //atiCard->initialize();
-    IOLog("Found Radeon: %us", atiCard->chipID);
+    atiCard = new ATICard();
+    atiCard->VCard = pciCard;
+    atiCard->chipID = device_id;
     
-    return true;
+    if (atiCard->initialize()) {
+        IOLog("%s[%p]::initialized card %us", getName(), this, atiCard->chipID);
+        return true;
+    } else {
+        IOLog ("[Warning] %s[%p]::could not initialize card", getName(), this);
+        return false;
+    }
 }
 
 void RadeonSensor::stop(IOService *provider) {

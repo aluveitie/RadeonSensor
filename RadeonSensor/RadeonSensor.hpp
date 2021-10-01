@@ -29,6 +29,7 @@ class RadeonSensor : public IOService {
     
 public:
     virtual bool init(OSDictionary* dictionary) override;
+    virtual IOService* probe(IOService* provider, SInt32* score) override;
     virtual void free(void) override;
     
     virtual bool start(IOService* provider) override;
@@ -38,7 +39,9 @@ public:
     
 
 private:
-    ATICard *atiCard;
+    UInt32 device_id = 0;
+    ATICard* atiCard;
+    IOPCIDevice* pciCard;
 };
 
 #endif /* RadeonSensor_hpp */

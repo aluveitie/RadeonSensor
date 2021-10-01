@@ -31,7 +31,6 @@ class RadeonModel {
         }
         
         let status = IOServiceOpen(serviceObject, mach_task_self_, 0, &connect)
-        print(status)
         
         return status == KERN_SUCCESS
     }
@@ -68,6 +67,6 @@ class RadeonModel {
             return 0
         }
         
-        return Int(scalerOut)
+        return Int(outputStr[0])
     }
 }
