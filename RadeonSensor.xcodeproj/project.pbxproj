@@ -23,7 +23,6 @@
 		CA7649362706F9B0001C109A /* RadeonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7649352706F9B0001C109A /* RadeonModel.swift */; };
 		CA764938270705DC001C109A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA764937270705DC001C109A /* Info.plist */; };
 		CA76493A27070759001C109A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76493927070759001C109A /* main.swift */; };
-		CA7BCA8F2707110500B0DD4D /* Lilu.kext in Resources */ = {isa = PBXBuildFile; fileRef = CA7BCA8E2707110500B0DD4D /* Lilu.kext */; };
 		CAC8041A27073E920088CC04 /* RadeonSensor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CAC8041927073E920088CC04 /* RadeonSensor.hpp */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +46,6 @@
 		CA7649352706F9B0001C109A /* RadeonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadeonModel.swift; sourceTree = "<group>"; };
 		CA764937270705DC001C109A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA76493927070759001C109A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		CA7BCA8E2707110500B0DD4D /* Lilu.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; path = Lilu.kext; sourceTree = "<group>"; };
 		CAC8041927073E920088CC04 /* RadeonSensor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RadeonSensor.hpp; sourceTree = "<group>"; };
 		CAED2D6D26FDC46500F319D5 /* RadeonSensor.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadeonSensor.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,7 +121,6 @@
 		CAF1441726FDC34400AD48E2 = {
 			isa = PBXGroup;
 			children = (
-				CA7BCA8E2707110500B0DD4D /* Lilu.kext */,
 				CAED2D6F26FDC46500F319D5 /* RadeonSensor */,
 				CA1CAEC926FDF8FE004D7E9A /* RadeonGadget */,
 				CAED2D6E26FDC46500F319D5 /* Products */,
@@ -236,7 +233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7BCA8F2707110500B0DD4D /* Lilu.kext in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
