@@ -12,15 +12,15 @@ import SwiftUI
 
 
 fileprivate class StatusbarView: NSView {
-    var temp: Int = 0
+    private var normalLabel: [NSAttributedString.Key : NSObject]?
+    private var compactLabel: [NSAttributedString.Key : NSObject]?
+    private var normalValue: [NSAttributedString.Key : NSObject]?
+    private var compactValue: [NSAttributedString.Key : NSObject]?
     
-    var normalLabel: [NSAttributedString.Key : NSObject]?
-    var compactLabel: [NSAttributedString.Key : NSObject]?
-    var normalValue: [NSAttributedString.Key : NSObject]?
-    var compactValue: [NSAttributedString.Key : NSObject]?
+    var temps: [Int] = []
     
     
-    func setup(){
+    func setup() {
         let compactLH: CGFloat = 6
         
         let p = NSMutableParagraphStyle()
@@ -49,13 +49,6 @@ fileprivate class StatusbarView: NSView {
         ]
     }
     
-    override func draw(_ dirtyRect: NSRect) {
-        guard let context = NSGraphicsContext.current?.cgContext else { return }
-        
-        drawTitle(label: "GPU", x: 0)
-        drawCompactSingle(label: "TEM", value: "\(temp)º", x: 35)
-    }
-    
     func drawTitle(label: String, x: CGFloat) {
         let attributedString = NSAttributedString(string: label, attributes: normalLabel)
         attributedString.draw(at: NSPoint(x: 0, y: 2.5))
@@ -67,6 +60,33 @@ fileprivate class StatusbarView: NSView {
         
         let value = NSAttributedString(string: value, attributes: normalValue)
         value.draw(at: NSPoint(x: x + 10, y: 2.5))
+    }
+}
+
+fileprivate class SingleGpuStatusbarView: StatusbarView {
+    
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        
+        let temp = temps[0]
+        
+        drawTitle(label: "GPU", x: 0)
+        drawCompactSingle(label: "TEM", value: "\(temp)º", x: 35)
+    }
+}
+
+fileprivate class MultiGpuStatusbarView: StatusbarView {
+    
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        
+        // todo: handle number of GPUs dynamically
+        let temp1 = temps[0]
+        let temp2 = temps[1]
+        
+        drawTitle(label: "GPU", x: 0)
+        drawCompactSingle(label: "GP1", value: "\(temp1)º", x: 35)
+        drawCompactSingle(label: "GP2", value: "\(temp2)º", x: 50)
     }
 }
 
@@ -83,10 +103,15 @@ class StatusBarController {
         statusItem.isVisible = true
         statusItem.length = 70
         
-        view = StatusbarView()
+        if (RadeonModel.shared.getTemps()[1] == 0) { // todo: get number of gpus explicitly
+            view = SingleGpuStatusbarView()
+            statusItem.length = 105
+        } else {
+            view = MultiGpuStatusbarView()
+            statusItem.length = 105 // todo: adapt for number of GPUs
+        }
         view.setup()
-        
-        
+                
         popover = NSPopover.init()
         let popupView = PopupView()
         popover.contentSize = NSSize(width: 120, height: 32)
@@ -106,9 +131,10 @@ class StatusBarController {
     }
     
     func update() {
-        let temp = RadeonModel.shared.getTemp()
+        let temps = RadeonModel.shared.getTemps()
         
-        view?.temp = temp
+        view.temps = temps
+
         view.setNeedsDisplay(view.frame)
     }
     

@@ -7,7 +7,6 @@
 
 import Cocoa
 
-
 class RadeonModel {
     static let shared = RadeonModel()
     
@@ -19,9 +18,9 @@ class RadeonModel {
         }
     }
     
-    func getTemp() -> Int {
-        let temp = kernelGetUInt64(count: 1, selector: 1)
-        return temp
+    func getTemps() -> [Int] {
+        let temps = kernelGetUInt64(count: 2, selector: 1)
+        return temps.map{ Int($0) }
     }
     
     private func initDriver() -> Bool {
@@ -51,11 +50,11 @@ class RadeonModel {
         NSApplication.shared.terminate(self)
     }
     
-    private func kernelGetUInt64(count : Int, selector : UInt32) -> Int {
+    private func kernelGetUInt64(count : Int, selector : UInt32) -> [UInt64] {
         var scalerOut: UInt64 = 0
-        var outputCount: UInt32 = 1
+        var outputCount: UInt32 = 2
 
-        let maxStrLength = count //MaxCpu + 3
+        let maxStrLength = count
         var outputStr: [UInt64] = [UInt64](repeating: 0, count: maxStrLength)
         var outputStrCount: Int = 8/*sizeof(uint64_t)*/ * maxStrLength
         let res = IOConnectCallMethod(connect, selector, nil, 0, nil, 0,
@@ -64,9 +63,9 @@ class RadeonModel {
         
         if res != KERN_SUCCESS {
             print(String(cString: mach_error_string(res)))
-            return 0
+            return []
         }
         
-        return Int(outputStr[0])
+        return outputStr
     }
 }
