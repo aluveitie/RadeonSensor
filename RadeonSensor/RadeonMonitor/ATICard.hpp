@@ -2,7 +2,7 @@
  *  ATICard.h
  *  FakeSMCRadeon
  *
- *  Created by Slice on 24.07.10.
+ *  Originally created by Slice on 24.07.10.
  *  Copyright 2010 Applelife.ru. All rights reserved.
  *
  */
@@ -13,24 +13,6 @@
 #include <IOKit/IOService.h>
 #include <IOKit/pci/IOPCIDevice.h>
 #include "radeon_chipsets.h"
-
-#define GPU_OVERCLOCKING (1<<0)
-#define MEM_OVERCLOCKING (1<<1)
-#define COOLBITS_OVERCLOCKING (1<<2)
-#define PIPELINE_MODDING (1<<3)
-#define GPU_FANSPEED_MONITORING (1<<4) /* Fanspeed monitoring based on fan voltage */
-#define BOARD_TEMP_MONITORING (1<<5) /* Board temperature */
-#define GPU_TEMP_MONITORING (1<<6) /* Internal GPU temperature */
-#define I2C_FANSPEED_MONITORING (1<<7) /* Fanspeed monitoring using a i2c sensor chip */
-#define I2C_AUTOMATIC_FANSPEED_CONTROL (1<<8) /* The sensor supports automatic fanspeed control */
-#define SMARTDIMMER (1<<9) /* Smartdimmer support for mobile GPUs */
-#define GPU_ID_MODDING (1<<10) /* PCI id modding is supported on this board */
-
-
-#define INVID8(offset) (mmio_base[offset])
-#define INVID16(offset) OSReadLittleInt16((mmio_base), offset)
-#define INVID(offset) OSReadLittleInt32((mmio_base), offset)
-#define OUTVID(offset,val) OSWriteLittleInt32((mmio_base), offset, val)
 
 #define Debug FALSE
 
@@ -44,10 +26,10 @@ enum TempFamilies {
     R6xx,
     R7xx,
     R8xx,
-  R9xx,
-  RCIx,
-  RAIx,
-  RVEx,
+    R9xx,
+    RCIx,
+    RAIx,
+    RVEx,
 };
 
 class ATICard : public OSObject {
@@ -57,7 +39,7 @@ public:
     UInt32          chipID;
     UInt16          family;
     IOPCIDevice *   VCard;
-    RADEONCardInfo*    rinfo;
+    RADEONCardInfo* rinfo;
     int             tempFamily;
     
 private:
@@ -67,15 +49,9 @@ private:
     UInt32          tReg;
     int             card_number;
     
+    bool            getRadeonInfo();
     
-    bool              getRadeonInfo    ();
-        
-protected:
-//    IOService*        m_Service;  //???
 public:
-  //  Binding* tempSensor;
-  //  Binding* boardSensor;
-  //  Binding* fanSensor;
   UInt32      read32(UInt32 reg);
   void        write32(UInt32 reg, UInt32 val);
   UInt32      read_ind(UInt32 reg);
