@@ -67,8 +67,13 @@ fileprivate class SingleGpuStatusbarView: StatusbarView {
     
     override func draw(_ dirtyRect: NSRect) {
         guard let context = NSGraphicsContext.current?.cgContext else { return }
-        
-        let temp = temps[0]
+
+        let temp: Int
+        if (temps.count == 0) {
+            temp = 0
+        } else {
+            temp = temps[0]
+        }
         
         drawTitle(label: "GPU", x: 0)
         drawCompactSingle(label: "TEM", value: "\(temp)º", x: 35)
@@ -77,16 +82,30 @@ fileprivate class SingleGpuStatusbarView: StatusbarView {
 
 fileprivate class MultiGpuStatusbarView: StatusbarView {
     
+    var nrOfGpus: Int = 0;
+    
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+               
+        drawTitle(label: "GPU", x: 0)
+        for i in 1...nrOfGpus {
+            let temp: Int
+            if (i <= temps.count) {
+                temp = temps[i-1]
+            } else {
+                temp = 20
+            }
+            drawCompactSingle(label: String(format:"GP%d", i), value: "\(temp)º", x: CGFloat(35 + (i-1)*40))
+        }
+    }
+}
+
+fileprivate class NoGpuStatusbarView: StatusbarView {
+    
     override func draw(_ dirtyRect: NSRect) {
         guard let context = NSGraphicsContext.current?.cgContext else { return }
         
-        // todo: handle number of GPUs dynamically
-        let temp1 = temps[0]
-        let temp2 = temps[1]
-        
-        drawTitle(label: "GPU", x: 0)
-        drawCompactSingle(label: "GP1", value: "\(temp1)º", x: 35)
-        drawCompactSingle(label: "GP2", value: "\(temp2)º", x: 50)
+        drawTitle(label: "GPU NOT FOUND", x: 0)
     }
 }
 
@@ -98,17 +117,24 @@ class StatusBarController {
     
     private var updateTimer: Timer?
     
+    private var nrOfGpus: Int
+    
     init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.isVisible = true
-        statusItem.length = 70
-        
-        if (RadeonModel.shared.getTemps()[1] == 0) { // todo: get number of gpus explicitly
+
+        nrOfGpus = RadeonModel.shared.getNrOfGpus()
+        if (nrOfGpus < 1) {
+            view = NoGpuStatusbarView()
+            statusItem.length = 110
+        } else if (nrOfGpus == 1) {
             view = SingleGpuStatusbarView()
-            statusItem.length = 105
+            statusItem.length = 70
         } else {
-            view = MultiGpuStatusbarView()
-            statusItem.length = 105 // todo: adapt for number of GPUs
+            let multiview = MultiGpuStatusbarView()
+            multiview.nrOfGpus = nrOfGpus
+            view = multiview
+            statusItem.length = CGFloat((35 + (nrOfGpus * 40) - 5))
         }
         view.setup()
                 
@@ -125,13 +151,15 @@ class StatusBarController {
             statusBarButton.target = self
         }
         
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
-            self.update()
-        })
+        if (nrOfGpus > 0) {
+            updateTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+                self.update()
+            })
+        }
     }
     
     func update() {
-        let temps = RadeonModel.shared.getTemps()
+        let temps = RadeonModel.shared.getTemps(nrOfGpus: nrOfGpus)
         
         view.temps = temps
 

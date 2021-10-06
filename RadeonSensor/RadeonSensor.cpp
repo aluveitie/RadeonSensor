@@ -26,6 +26,8 @@ bool RadeonSensor::init(OSDictionary *dictionary){
 
 void RadeonSensor::free() {
     IOLog("RadeonSensor freeing up");
+    
+    delete [] atiCards;
         
     super::free();
 }
@@ -36,11 +38,13 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
     }
     
     int count = 0;
+    int maxCount = 4; // maximally support 4 GPUs
+    ATICard** cards = new ATICard*[4];
     if (OSDictionary * dictionary = serviceMatching("IOPCIDevice")) {
         if (OSIterator * iterator = getMatchingServices(dictionary)) {
-            IOPCIDevice* device = NULL;
             UInt32 vendor_id = 0;
             UInt32 class_id = 0;
+            IOPCIDevice* device = NULL;
             do {
                 device = OSDynamicCast(IOPCIDevice, iterator->getNextObject());
                 if (!device) {
@@ -74,21 +78,20 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
                     ATICard* atiCard = new ATICard();
                     atiCard->VCard = device;
                     atiCard->chipID = device_id;
-                    atiCards[count] = atiCard;
+                    cards[count] = atiCard;
                     
                     count++;
-                    if (count == 2) {
+                    if (count == maxCount) {
                         break;
                     }
               }
-              /*else {
-               WarningLog("ATI Radeon not found!");
-               }*/
             } while (device);
         }
     }
     
     if (count > 0) {
+        nrOfCards = count;
+        atiCards = cards;
         return this;
     } else {
         return 0;
@@ -124,7 +127,7 @@ void RadeonSensor::stop(IOService *provider) {
     super::stop(provider);
 }
 
-void RadeonSensor::getTemperatures(UInt16 data[2]) {
+void RadeonSensor::getTemperatures(UInt16 data[]) {
     if (nrOfCards == 0) {
         IOLog("RadeonSensor no GPU were found");
         return;
@@ -169,6 +172,10 @@ void RadeonSensor::getTemperatures(UInt16 data[2]) {
     }
     
     return;
+}
+
+UInt16 RadeonSensor::getNumberOfCards() {
+    return nrOfCards;
 }
 
 EXPORT extern "C" kern_return_t radeonsensor_start(kmod_info_t *, void *) {
