@@ -11,7 +11,6 @@ import AppKit
 
 fileprivate class StatusbarView: NSView {
     var temp: Int = 0
-    var maxTemp: Int = 0
     
     var normalLabel: [NSAttributedString.Key : NSObject]?
     var compactLabel: [NSAttributedString.Key : NSObject]?
@@ -53,7 +52,6 @@ fileprivate class StatusbarView: NSView {
         
         drawTitle(label: "GPU", x: 0)
         drawCompactSingle(label: "TEM", value: "\(temp)º", x: 35)
-        drawCompactSingle(label: "MAX", value: "\(maxTemp)º", x: 70)
     }
     
     func drawTitle(label: String, x: CGFloat) {
@@ -86,7 +84,7 @@ class StatusBarController {
         statusItem.button?.wantsLayer = true
         statusItem.button?.addSubview(view)
         
-        statusItem.length = 105
+        statusItem.length = 70
         view.frame = statusItem.button!.bounds
         
         updateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
@@ -98,9 +96,6 @@ class StatusBarController {
         let temp = RadeonModel.shared.getTemp()
         
         view?.temp = temp
-        if (temp > view!.maxTemp) {
-            view!.maxTemp = temp
-        }
         view.setNeedsDisplay(view.frame)
     }
     
