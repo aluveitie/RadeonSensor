@@ -140,7 +140,8 @@ bool ATICard::getRadeonInfo() {
   }
 
   //Vega
-  if (((devID >= 0x6860) && (devID <= 0x687F)) ||
+  if (((devID == 0x66af)) ||
+      ((devID >= 0x6860) && (devID <= 0x687F)) ||
       ((devID >= 0x7301) && (devID <= 0x73BF))
       ) {  //Vega
     rinfo->device_id = devID;
