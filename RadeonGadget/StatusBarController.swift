@@ -7,6 +7,8 @@
 
 import Foundation
 import AppKit
+import Cocoa
+import SwiftUI
 
 
 fileprivate class StatusbarView: NSView {
@@ -72,22 +74,33 @@ class StatusBarController {
     private var statusItem: NSStatusItem!
     fileprivate var view: StatusbarView!
     
-    var updateTimer: Timer?
-    var menu: NSMenu?
+    private var popover: NSPopover
+    
+    private var updateTimer: Timer?
     
     init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.isVisible = true
+        statusItem.length = 70
         
         view = StatusbarView()
         view.setup()
-        statusItem.button?.wantsLayer = true
-        statusItem.button?.addSubview(view)
         
-        statusItem.length = 70
-        view.frame = statusItem.button!.bounds
         
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+        popover = NSPopover.init()
+        let popupView = PopupView()
+        popover.contentSize = NSSize(width: 120, height: 32)
+        popover.contentViewController = NSHostingController(rootView: popupView)
+        
+        if let statusBarButton = statusItem.button {
+            view.frame = statusBarButton.bounds
+            statusBarButton.wantsLayer = true
+            statusBarButton.addSubview(view)
+            statusBarButton.action = #selector(togglePopover(sender:))
+            statusBarButton.target = self
+        }
+        
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
             self.update()
         })
     }
@@ -103,5 +116,24 @@ class StatusBarController {
         updateTimer?.invalidate()
         NSStatusBar.system.removeStatusItem(statusItem!)
         statusItem = nil
+    }
+    
+    @objc func togglePopover(sender: AnyObject) {
+        if (popover.isShown) {
+            popover.performClose(sender)
+        } else {
+            if let statusBarButton = statusItem.button {
+                popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
+            }
+        }
+    }
+}
+
+struct PopupView: View {
+    var body: some View {
+        Button(action: { exit(0) }) {
+            Text("Exit").frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+            
     }
 }
