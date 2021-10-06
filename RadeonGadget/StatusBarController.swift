@@ -68,15 +68,18 @@ fileprivate class SingleGpuStatusbarView: StatusbarView {
     override func draw(_ dirtyRect: NSRect) {
         guard let context = NSGraphicsContext.current?.cgContext else { return }
 
-        let temp: Int
+        let temp: String
         if (temps.count == 0) {
-            temp = 0
+            temp = "-"
+        } else if (temps[0] > 125) {
+            temp = "INV"
+            NSLog("Found invalid temperature: %u", temps[0])
         } else {
-            temp = temps[0]
+            temp = "\(temps[0])º"
         }
         
         drawTitle(label: "GPU", x: 0)
-        drawCompactSingle(label: "TEM", value: "\(temp)º", x: 35)
+        drawCompactSingle(label: "TEM", value: (temp), x: 35)
     }
 }
 
@@ -89,13 +92,16 @@ fileprivate class MultiGpuStatusbarView: StatusbarView {
                
         drawTitle(label: "GPU", x: 0)
         for i in 1...nrOfGpus {
-            let temp: Int
-            if (i <= temps.count) {
-                temp = temps[i-1]
+            let temp: String
+            if (i > temps.count || temps[i-1] == 255) {
+                temp = "-"
+            } else if temps[i-1] > 125 {
+                temp = "INV"
+                NSLog("Found invalid temperature for GPU %u: %u", i, temps[0])
             } else {
-                temp = 20
+                temp = "\(temps[i-1])º"
             }
-            drawCompactSingle(label: String(format:"GP%d", i), value: "\(temp)º", x: CGFloat(35 + (i-1)*40))
+            drawCompactSingle(label: String(format:"GP%d", i), value: temp, x: CGFloat(35 + (i-1)*40))
         }
     }
 }
