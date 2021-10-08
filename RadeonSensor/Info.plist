@@ -57,5 +57,9 @@
 		<key>com.apple.kpi.mach</key>
 		<string>10.0.0</string>
 	</dict>
+	<key>OSBundleCompatibleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>OSBundleRequired</key>
+	<string>Root</string>
 </dict>
 </plist>

@@ -4,3 +4,4 @@ build
 
 *.kext
 RadeonSensor.xcodeproj/xcuserdata/**
+RadeonSensor.xcodeproj/project.xcworkspace/xcuserdata/**

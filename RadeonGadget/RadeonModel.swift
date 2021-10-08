@@ -2,7 +2,7 @@
 //  RadeonModel.swift
 //  RadeonGadget
 //
-//  Created by Altoo on 01.10.21.
+//  Created by Aluveitie on 01.10.21.
 //
 
 import Cocoa

@@ -2,7 +2,7 @@
 //  RadeonSensorUserClient.hpp
 //  RadeonSensor
 //
-//  Created by Altoo on 24.09.21.
+//  Created by Aluveitie on 24.09.21.
 //
 
 #ifndef RadeonSensorUserClient_hpp
