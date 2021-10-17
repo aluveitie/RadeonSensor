@@ -21,7 +21,7 @@ bool RadeonSensorUserClient::initWithTask(task_t owningTask, void* securityToken
         return false;
     }
 
-    IOLog("%s[%p]::%s(%p, %p, %u, %p)\n", getName(), this, __FUNCTION__, owningTask, securityToken, (unsigned int)type, properties);
+    IOLog("RadeonSensor::UserClient init with task\n");
     
     mTask = owningTask;
     mProvider = NULL;
@@ -30,7 +30,7 @@ bool RadeonSensorUserClient::initWithTask(task_t owningTask, void* securityToken
 }
 
 bool RadeonSensorUserClient::start(IOService* provider) {
-    IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, provider);
+    IOLog("RadeonSensor::UserClient starting\n");
     
     mProvider = OSDynamicCast(RadeonSensor, provider);
     bool success = (mProvider != NULL);
@@ -43,15 +43,13 @@ bool RadeonSensorUserClient::start(IOService* provider) {
 
 
 void RadeonSensorUserClient::stop(IOService* provider){
-    IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, provider);
+    IOLog("RadeonSensor::UserClient stopping\n");
     
     mProvider = NULL;
     super::stop(provider);
 }
 
-IOReturn RadeonSensorUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference) {
-    IOLog("%s[%p]::%s(%d, %p, %p, %p, %p)\n", getName(), this, __FUNCTION__, selector, arguments, dispatch, target, reference);
-    
+IOReturn RadeonSensorUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference) {    
     switch (selector) {
             //Get temperature
             case 1: {

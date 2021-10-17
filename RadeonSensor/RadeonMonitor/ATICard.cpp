@@ -18,7 +18,7 @@ bool ATICard::initialize() {
     VCard->setMemoryEnable(true);
     IOMemoryDescriptor* theDescriptor;
     IOPhysicalAddress bar = (IOPhysicalAddress)((VCard->configRead32(kIOPCIConfigBaseAddress5)) & ~0x3f);
-    InfoLog("register space5=%08lx\n", (long unsigned int)bar);
+    IOLog("RadeonSensor::ATICard register space5=%08lx\n", (long unsigned int)bar);
     theDescriptor = IOMemoryDescriptor::withPhysicalAddress (bar, 0x80000, kIODirectionOutIn); // | kIOMapInhibitCache);
     
     if(theDescriptor != NULL) {
@@ -35,9 +35,9 @@ bool ATICard::initialize() {
     mmio = VCard->mapDeviceMemoryWithIndex(1);
     if (mmio)    {
         mmio_base = (volatile UInt8 *)mmio->getVirtualAddress();
-        InfoLog("mmio_base=0x%llx\n", mmio->getPhysicalAddress());
+        IOLog("RadeonSensor::ATICard mmio_base=0x%llx\n", mmio->getPhysicalAddress());
     } else {
-        InfoLog(" have no mmio\n ");
+        IOLog("RadeonSensor::ATICard have no mmio\n");
         return false;
     }
     
@@ -50,7 +50,7 @@ bool ATICard::initialize() {
             mmio = mmio5;
             mmio_base = (volatile UInt8 *)mmio->getVirtualAddress();
         }
-        InfoLog(" use mmio5 at 0x%llx\n", (unsigned long long)mmio_base);
+        IOLog("RadeonSensor::ATICard use mmio5 at 0x%llx\n", (unsigned long long)mmio_base);
     }
     
     switch (rinfo->ChipFamily) {
@@ -94,7 +94,7 @@ bool ATICard::initialize() {
             break;
             
         default:
-            InfoLog("sorry, but your card %04lx is not supported!\n", (long unsigned int)(rinfo->device_id));
+            IOLog("RadeonSensor::ATICard sorry, but your card %04lx is not supported!\n", (long unsigned int)(rinfo->device_id));
             return false;
     }
     
@@ -112,7 +112,7 @@ bool ATICard::getRadeonInfo() {
             family = devices->ChipFamily;
             rinfo->igp = devices->igp;
             rinfo->is_mobility = devices->is_mobility;
-            IOLog(" Found ATI Radeon %04lx\n", (long unsigned int)devID);
+            IOLog("RadeonSensor::ATICard found ATI Radeon %04lx\n", (long unsigned int)devID);
             return true;
         }
         devices++;
@@ -128,7 +128,7 @@ bool ATICard::getRadeonInfo() {
         family = CHIP_FAMILY_VEGA;
         rinfo->igp = 0;
         rinfo->is_mobility = false;
-        InfoLog(" Common ATI Radeon VEGA DID=%04lx\n", (long unsigned int)devID);
+        IOLog("RadeonSensor::ATICard common ATI Radeon VEGA DID=%04lx\n", (long unsigned int)devID);
         return true;
         //Polaris
     } else if (((devID >= 0x67C0) && (devID <= 0x67FF)) ||  //Polaris 10,11
@@ -139,7 +139,7 @@ bool ATICard::getRadeonInfo() {
         family = CHIP_FAMILY_POLARIS;
         rinfo->igp = 0;
         rinfo->is_mobility = false;
-        InfoLog(" Common ATI Radeon Polaris DID=%04lx\n", (long unsigned int)devID);
+        IOLog("RadeonSensor::ATICard common ATI Radeon Polaris DID=%04lx\n", (long unsigned int)devID);
         return true;
         //SeaIsland R7-2xx, 3xx, 4xx, 5xx,
     } else if (((devID >= 0x67A0) && (devID <= 0x67BF)) ||  //Hawaii
@@ -151,7 +151,7 @@ bool ATICard::getRadeonInfo() {
         family = CHIP_FAMILY_HAWAII;
         rinfo->igp = 0;
         rinfo->is_mobility = false;
-        InfoLog(" Common ATI Radeon SeaIsland DID=%04lx\n", (long unsigned int)devID);
+        IOLog("RadeonSensor::ATICard common ATI Radeon SeaIsland DID=%04lx\n", (long unsigned int)devID);
         return true;
         //SouthernIsland HD7xxx
     } else if (((devID >= 0x6780) && (devID <= 0x679F)) ||  //Tahiti
@@ -161,7 +161,7 @@ bool ATICard::getRadeonInfo() {
         family = CHIP_FAMILY_PITCAIRN;
         rinfo->igp = 0;
         rinfo->is_mobility = false;
-        InfoLog(" Common ATI Radeon SouthernIsland DID=%04lx\n", (long unsigned int)devID);
+        IOLog("RadeonSensor::ATICard common ATI Radeon SouthernIsland DID=%04lx\n", (long unsigned int)devID);
         return true;
         //Evergreen HD5xxx and NothenIsland HD6xxx
     } else if (((devID & 0xFF00) == 0x6700) || ((devID & 0xFF00) == 0x6800)) {
@@ -170,11 +170,11 @@ bool ATICard::getRadeonInfo() {
         family = CHIP_FAMILY_Evergreen;
         rinfo->igp = 0;
         rinfo->is_mobility = false;
-        InfoLog(" Common ATI Radeon Evergreen/NothenIsland DID=%04lx\n", (long unsigned int)devID);
+        IOLog("RadeonSensor::ATICard common ATI Radeon Evergreen/NothenIsland DID=%04lx\n", (long unsigned int)devID);
         return true;
     }
     
-    InfoLog("Unknown DeviceID!\n");
+    IOLog("RadeonSensor::ATICard  Unknown DeviceID!\n");
     return false;
 }
 /*

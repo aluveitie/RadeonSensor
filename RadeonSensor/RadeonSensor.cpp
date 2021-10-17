@@ -19,13 +19,13 @@ bool RadeonSensor::init(OSDictionary *dictionary){
         return false;
     }
     
-    IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, dictionary);
+    IOLog("RadeonSensor initialized");
     
     return true;
 }
 
 void RadeonSensor::free() {
-    IOLog("%s[%p]::%s()\n", getName(), this, __FUNCTION__);
+    IOLog("RadeonSensor freeing up");
         
     super::free();
 }
@@ -70,7 +70,7 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
                 }
 
                 if ((vendor_id==0x1002) && (class_id == 0x030000)) {
-                    InfoLog("found Radeon chip id=%x ", (unsigned int)device_id);
+                    IOLog("RadeonSensor found Radeon chip id=%x ", (unsigned int)device_id);
                     pciCard = device;
                     ret = true; //TODO - count a number of cards
                     break;
@@ -90,10 +90,10 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
 }
 
 bool RadeonSensor::start(IOService *provider) {
-    IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, provider);
+    IOLog("RadeonSensor starting\n");
     
     if(!super::start(provider)){
-        IOLog("%s[%p]::failed to start\n", getName(), this);
+        IOLog("RadeonSensor failed to start\n");
         return false;
     }
     
@@ -104,16 +104,16 @@ bool RadeonSensor::start(IOService *provider) {
     atiCard->chipID = device_id;
     
     if (atiCard->initialize()) {
-        IOLog("%s[%p]::initialized card %us", getName(), this, atiCard->chipID);
+        IOLog("RadeonSensor initialized card %us", atiCard->chipID);
         return true;
     } else {
-        IOLog ("[Warning] %s[%p]::could not initialize card", getName(), this);
+        IOLog ("RadeonSensor could not initialize card");
         return false;
     }
 }
 
 void RadeonSensor::stop(IOService *provider) {
-    IOLog("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, provider);
+    IOLog("RadeonSensor stopping\n");
     
     super::stop(provider);
 }
@@ -121,7 +121,7 @@ void RadeonSensor::stop(IOService *provider) {
 uint16_t RadeonSensor::getTemperature() {
     UInt16 data;
     if (atiCard == NULL) {
-        IOLog("Not initialized");
+        IOLog("RadeonSensor card not initialized");
         return 0;
     }
         

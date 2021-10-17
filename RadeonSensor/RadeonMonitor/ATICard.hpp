@@ -14,13 +14,6 @@
 #include <IOKit/pci/IOPCIDevice.h>
 #include "radeon_chipsets.h"
 
-#define Debug FALSE
-
-#define LogPrefix "RadeonMonitor: "
-#define DebugLog(string, args...)    do { if (Debug) { IOLog (LogPrefix "[Debug] " string "\n", ## args); } } while(0)
-#define WarningLog(string, args...) do { IOLog (LogPrefix "[Warning] " string "\n", ## args); } while(0)
-#define InfoLog(string, args...)    do { IOLog (LogPrefix string "\n", ## args); } while(0)
-
 enum TempFamilies {
     R5xx,
     R6xx,
