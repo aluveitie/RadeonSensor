@@ -26,6 +26,8 @@ bool RadeonSensor::init(OSDictionary *dictionary){
 
 void RadeonSensor::free() {
     IOLog("RadeonSensor freeing up");
+    
+    delete [] atiCards;
         
     super::free();
 }
@@ -35,12 +37,14 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
         return 0;
     }
     
-    bool ret = false;
+    int count = 0;
+    int maxCount = 4; // maximally support 4 GPUs
+    ATICard** cards = new ATICard*[4];
     if (OSDictionary * dictionary = serviceMatching("IOPCIDevice")) {
         if (OSIterator * iterator = getMatchingServices(dictionary)) {
-            IOPCIDevice* device = NULL;
             UInt32 vendor_id = 0;
             UInt32 class_id = 0;
+            IOPCIDevice* device = NULL;
             do {
                 device = OSDynamicCast(IOPCIDevice, iterator->getNextObject());
                 if (!device) {
@@ -57,7 +61,7 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
                     }
                 }
 
-                device_id = 0;
+                int device_id = 0;
                 data = OSDynamicCast(OSData, device->getProperty("device-id"));
                 if (data) {
                     device_id = *(UInt32*)data->getBytesNoCopy();
@@ -70,19 +74,24 @@ IOService* RadeonSensor::probe(IOService* provider, SInt32* score) {
                 }
 
                 if ((vendor_id==0x1002) && (class_id == 0x030000)) {
-                    IOLog("RadeonSensor found Radeon chip id=%x ", (unsigned int)device_id);
-                    pciCard = device;
-                    ret = true; //TODO - count a number of cards
-                    break;
+                    IOLog("RadeonSensor found Radeon PCIe device id=%x", (unsigned int)device_id);
+                    ATICard* atiCard = new ATICard();
+                    atiCard->VCard = device;
+                    atiCard->chipID = device_id;
+                    cards[count] = atiCard;
+                    
+                    count++;
+                    if (count == maxCount) {
+                        break;
+                    }
               }
-              /*else {
-               WarningLog("ATI Radeon not found!");
-               }*/
             } while (device);
         }
     }
     
-    if (ret) {
+    if (count > 0) {
+        nrOfCards = count;
+        atiCards = cards;
         return this;
     } else {
         return 0;
@@ -99,17 +108,17 @@ bool RadeonSensor::start(IOService *provider) {
     
     registerService();
     
-    atiCard = new ATICard();
-    atiCard->VCard = pciCard;
-    atiCard->chipID = device_id;
-    
-    if (atiCard->initialize()) {
-        IOLog("RadeonSensor initialized card %us", atiCard->chipID);
-        return true;
-    } else {
-        IOLog ("RadeonSensor could not initialize card");
-        return false;
+    for (int i = 0; i < nrOfCards; i++) {
+        ATICard* atiCard = atiCards[i];
+        if (atiCard->initialize()) {
+            IOLog("RadeonSensor initialized card (%x)", atiCard->chipID);
+        } else {
+            IOLog("RadeonSensor could not initialize card (%x)", atiCard->chipID);
+            return false;
+        }
     }
+    
+    return true;
 }
 
 void RadeonSensor::stop(IOService *provider) {
@@ -118,38 +127,55 @@ void RadeonSensor::stop(IOService *provider) {
     super::stop(provider);
 }
 
-uint16_t RadeonSensor::getTemperature() {
-    UInt16 data;
-    if (atiCard == NULL) {
-        IOLog("RadeonSensor card not initialized");
-        return 0;
+void RadeonSensor::getTemperatures(UInt16 data[]) {
+    if (nrOfCards == 0) {
+        IOLog("RadeonSensor no GPU were found");
+        return;
     }
-        
-    switch (atiCard->tempFamily) {
-        case R6xx:
-            atiCard->R6xxTemperatureSensor(&data);
-            return data;
-        case R7xx:
-            atiCard->R7xxTemperatureSensor(&data);
-            return data;
-        case R8xx:
-            atiCard->EverTemperatureSensor(&data);
-            return data;
-        case R9xx:
-            atiCard->TahitiTemperatureSensor(&data);
-            return data;
-        case RCIx:
-            atiCard->TahitiTemperatureSensor(&data);
-            return data;
-        case RAIx:
-            atiCard->ArcticTemperatureSensor(&data);
-            return data;
-        case RVEx:
-            atiCard->VegaTemperatureSensor(&data);
-            return data;
-        default:
-            return 0;
+    
+    for (int i = 0; i < nrOfCards; i++) {
+        UInt16 temp = 0;
+        ATICard* atiCard = atiCards[i];
+        switch (atiCard->tempFamily) {
+            case R6xx:
+                atiCard->R6xxTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            case R7xx:
+                atiCard->R7xxTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            case R8xx:
+                atiCard->EverTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            case R9xx:
+                atiCard->TahitiTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            case RCIx:
+                atiCard->TahitiTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            case RAIx:
+                atiCard->ArcticTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            case RVEx:
+                atiCard->VegaTemperatureSensor(&temp);
+                data[i] = temp;
+                break;
+            default:
+                data[i] = temp;
+                break;
+        }
     }
+    
+    return;
+}
+
+UInt16 RadeonSensor::getNumberOfCards() {
+    return nrOfCards;
 }
 
 EXPORT extern "C" kern_return_t radeonsensor_start(kmod_info_t *, void *) {

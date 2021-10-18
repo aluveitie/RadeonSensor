@@ -51,15 +51,28 @@ void RadeonSensorUserClient::stop(IOService* provider){
 
 IOReturn RadeonSensorUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference) {    
     switch (selector) {
-            //Get temperature
-            case 1: {
-                arguments->scalarOutputCount = 0;
-                arguments->structureOutputSize = 1 * sizeof(uint64_t);
-                uint64_t *dataOut = (uint64_t*) arguments->structureOutput;
-                
-                uint16_t temp = mProvider->getTemperature();
-                dataOut[0] = (uint64_t)temp;
-            }
+        //Get number of cards
+        case 1: {
+            UInt16 numCards = mProvider->getNumberOfCards();
+            arguments->scalarOutputCount = 1;
+            arguments->scalarOutput[0] = numCards;
+            
+            arguments->structureOutputSize = 0;
+            
+            break;
+        }
+        //Get temperatures
+        case 2: {
+            UInt16 numCards = mProvider->getNumberOfCards();
+            arguments->scalarOutputCount = 1;
+            arguments->scalarOutput[0] = numCards;
+            
+            arguments->structureOutputSize = numCards * sizeof(UInt16);
+            UInt16 *dataOut = (UInt16*) arguments->structureOutput;
+            mProvider->getTemperatures(dataOut);
+
+            break;
+        }
     }
     
     return kIOReturnSuccess;

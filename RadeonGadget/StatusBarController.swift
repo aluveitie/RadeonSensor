@@ -12,15 +12,15 @@ import SwiftUI
 
 
 fileprivate class StatusbarView: NSView {
-    var temp: Int = 0
+    private var normalLabel: [NSAttributedString.Key : NSObject]?
+    private var compactLabel: [NSAttributedString.Key : NSObject]?
+    private var normalValue: [NSAttributedString.Key : NSObject]?
+    private var compactValue: [NSAttributedString.Key : NSObject]?
     
-    var normalLabel: [NSAttributedString.Key : NSObject]?
-    var compactLabel: [NSAttributedString.Key : NSObject]?
-    var normalValue: [NSAttributedString.Key : NSObject]?
-    var compactValue: [NSAttributedString.Key : NSObject]?
+    var temps: [Int] = []
     
     
-    func setup(){
+    func setup() {
         let compactLH: CGFloat = 6
         
         let p = NSMutableParagraphStyle()
@@ -49,13 +49,6 @@ fileprivate class StatusbarView: NSView {
         ]
     }
     
-    override func draw(_ dirtyRect: NSRect) {
-        guard let context = NSGraphicsContext.current?.cgContext else { return }
-        
-        drawTitle(label: "GPU", x: 0)
-        drawCompactSingle(label: "TEM", value: "\(temp)º", x: 35)
-    }
-    
     func drawTitle(label: String, x: CGFloat) {
         let attributedString = NSAttributedString(string: label, attributes: normalLabel)
         attributedString.draw(at: NSPoint(x: 0, y: 2.5))
@@ -70,6 +63,58 @@ fileprivate class StatusbarView: NSView {
     }
 }
 
+fileprivate class SingleGpuStatusbarView: StatusbarView {
+    
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+
+        let temp: String
+        if (temps.count == 0) {
+            temp = "-"
+        } else if (temps[0] > 125) {
+            temp = "INV"
+            NSLog("Found invalid temperature: %u", temps[0])
+        } else {
+            temp = "\(temps[0])º"
+        }
+        
+        drawTitle(label: "GPU", x: 0)
+        drawCompactSingle(label: "TEM", value: (temp), x: 35)
+    }
+}
+
+fileprivate class MultiGpuStatusbarView: StatusbarView {
+    
+    var nrOfGpus: Int = 0;
+    
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+               
+        drawTitle(label: "GPU", x: 0)
+        for i in 1...nrOfGpus {
+            let temp: String
+            if (i > temps.count || temps[i-1] == 255) {
+                temp = "-"
+            } else if temps[i-1] > 125 {
+                temp = "INV"
+                NSLog("Found invalid temperature for GPU %u: %u", i, temps[0])
+            } else {
+                temp = "\(temps[i-1])º"
+            }
+            drawCompactSingle(label: String(format:"GP%d", i), value: temp, x: CGFloat(35 + (i-1)*40))
+        }
+    }
+}
+
+fileprivate class NoGpuStatusbarView: StatusbarView {
+    
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        
+        drawTitle(label: "GPU NOT FOUND", x: 0)
+    }
+}
+
 class StatusBarController {
     private var statusItem: NSStatusItem!
     fileprivate var view: StatusbarView!
@@ -78,15 +123,27 @@ class StatusBarController {
     
     private var updateTimer: Timer?
     
+    private var nrOfGpus: Int
+    
     init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.isVisible = true
-        statusItem.length = 70
-        
-        view = StatusbarView()
+
+        nrOfGpus = RadeonModel.shared.getNrOfGpus()
+        if (nrOfGpus < 1) {
+            view = NoGpuStatusbarView()
+            statusItem.length = 110
+        } else if (nrOfGpus == 1) {
+            view = SingleGpuStatusbarView()
+            statusItem.length = 70
+        } else {
+            let multiview = MultiGpuStatusbarView()
+            multiview.nrOfGpus = nrOfGpus
+            view = multiview
+            statusItem.length = CGFloat((35 + (nrOfGpus * 40) - 5))
+        }
         view.setup()
-        
-        
+                
         popover = NSPopover.init()
         let popupView = PopupView()
         popover.contentSize = NSSize(width: 120, height: 32)
@@ -100,15 +157,18 @@ class StatusBarController {
             statusBarButton.target = self
         }
         
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
-            self.update()
-        })
+        if (nrOfGpus > 0) {
+            updateTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+                self.update()
+            })
+        }
     }
     
     func update() {
-        let temp = RadeonModel.shared.getTemp()
+        let temps = RadeonModel.shared.getTemps(nrOfGpus: nrOfGpus)
         
-        view?.temp = temp
+        view.temps = temps
+
         view.setNeedsDisplay(view.frame)
     }
     

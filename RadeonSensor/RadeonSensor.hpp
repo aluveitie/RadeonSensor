@@ -35,13 +35,13 @@ public:
     virtual bool start(IOService* provider) override;
     virtual void stop(IOService* provider) override;
     
-    uint16_t getTemperature();
+    void getTemperatures(UInt16 data[]);
+    UInt16 getNumberOfCards();
     
 
 private:
-    UInt32 device_id = 0;
-    ATICard* atiCard;
-    IOPCIDevice* pciCard;
+    UInt16 nrOfCards = 0;
+    ATICard** atiCards = nullptr;
 };
 
 #endif /* RadeonSensor_hpp */

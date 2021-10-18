@@ -7,7 +7,6 @@
 
 import Cocoa
 
-
 class RadeonModel {
     static let shared = RadeonModel()
     
@@ -19,9 +18,30 @@ class RadeonModel {
         }
     }
     
-    func getTemp() -> Int {
-        let temp = kernelGetUInt64(count: 1, selector: 1)
-        return temp
+    func getNrOfGpus() -> Int {
+        var scalerOut: UInt64 = 0
+        var outputCount: UInt32 = 1
+
+        var outputStr: [UInt64] = [UInt64]()
+        var outputStrCount: Int = 0
+        let _ = IOConnectCallMethod(connect, 1, nil, 0, nil, 0,
+                                       &scalerOut, &outputCount,
+                                       &outputStr, &outputStrCount)
+            
+        return Int(scalerOut)
+    }
+    
+    func getTemps(nrOfGpus: Int) -> [Int] {
+        var scalerOut: UInt64 = 0
+        var outputCount: UInt32 = 0
+
+        var outputStr: [UInt16] = [UInt16](repeating: 0, count: nrOfGpus)
+        var outputStrCount: Int = 2 /* sizeof(UInt16) */ * nrOfGpus
+        let _ = IOConnectCallMethod(connect, 2, nil, 0, nil, 0,
+                                      &scalerOut, &outputCount,
+                                      &outputStr, &outputStrCount)
+        
+        return outputStr.map{ Int($0) }
     }
     
     private func initDriver() -> Bool {
@@ -49,24 +69,5 @@ class RadeonModel {
         }
         
         NSApplication.shared.terminate(self)
-    }
-    
-    private func kernelGetUInt64(count : Int, selector : UInt32) -> Int {
-        var scalerOut: UInt64 = 0
-        var outputCount: UInt32 = 1
-
-        let maxStrLength = count //MaxCpu + 3
-        var outputStr: [UInt64] = [UInt64](repeating: 0, count: maxStrLength)
-        var outputStrCount: Int = 8/*sizeof(uint64_t)*/ * maxStrLength
-        let res = IOConnectCallMethod(connect, selector, nil, 0, nil, 0,
-                                      &scalerOut, &outputCount,
-                                      &outputStr, &outputStrCount)
-        
-        if res != KERN_SUCCESS {
-            print(String(cString: mach_error_string(res)))
-            return 0
-        }
-        
-        return Int(outputStr[0])
     }
 }
