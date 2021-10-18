@@ -51,6 +51,19 @@ void RadeonSensorUserClient::stop(IOService* provider){
 
 IOReturn RadeonSensorUserClient::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference) {    
     switch (selector) {
+        //Get Kext version string
+        case 0: {
+            char version[] = xStringify(MODULE_VERSION);
+            arguments->scalarOutputCount = 0;
+            arguments->structureOutputSize = sizeof(version);
+            
+            char *dataOut = (char*) arguments->structureOutput;
+            for(uint32_t i = 0; i < arguments->structureOutputSize; i++){
+                dataOut[i] = version[i];
+            }
+            
+            break;
+        }
         //Get number of cards
         case 1: {
             UInt16 numCards = mProvider->getNumberOfCards();

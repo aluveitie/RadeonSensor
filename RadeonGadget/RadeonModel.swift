@@ -16,6 +16,35 @@ class RadeonModel {
         if !initDriver() {
             alertAndQuit(message: "Please download RadeonSensor from the release page.")
         }
+        
+        let gadgetVersion = (0, 1)
+        
+        let kextVersion = getKextVersion()
+        if (kextVersion.1 > gadgetVersion.1) {
+            alert(message: "There are updates available for RadeonSensor. Update to the latest version for more features.")
+        } else if (kextVersion.1 < gadgetVersion.1 || kextVersion.0 != gadgetVersion.0) {
+            alertAndQuit(message: "There are updates available for RadeonSensor. Your version is incompatible with this version of RadeonGadget.")
+        }
+    }
+    
+    func getKextVersion() -> (Int, Int) {
+        var scalerOut: UInt64 = 0
+        var outputCount: UInt32 = 0
+
+        let maxStrLength = 16
+        var outputStr: [CChar] = [CChar](repeating: 0, count: maxStrLength)
+        var outputStrCount: Int = maxStrLength
+        let _ = IOConnectCallMethod(connect, 0, nil, 0, nil, 0,
+                                      &scalerOut, &outputCount,
+                                      &outputStr, &outputStrCount)
+        
+        let kextVersion = String(cString: Array(outputStr[0...outputStrCount-1]))
+        if (kextVersion.contains(".")) {
+        let versionArr = kextVersion.components(separatedBy: ".")
+            return (Int(versionArr[0]) ?? 0, Int(versionArr[1]) ?? 0)
+        } else {
+            return (0, 0);
+        }
     }
     
     func getNrOfGpus() -> Int {
@@ -69,5 +98,19 @@ class RadeonModel {
         }
         
         NSApplication.shared.terminate(self)
+    }
+    
+    private func alert(message : String){
+        let alert = NSAlert()
+        alert.messageText = "Kext Update Available"
+        alert.informativeText = message
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Later")
+        alert.addButton(withTitle: "Download")
+        let res = alert.runModal()
+        
+        if res == .alertSecondButtonReturn {
+            NSWorkspace.shared.open(URL(string: "https://github.com/aluveitie/RadeonSensor")!)
+        }
     }
 }
