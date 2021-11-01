@@ -12,7 +12,7 @@
 #include <IOKit/pci/IOPCIDevice.h>
 #include <IOKit/IOTimerEventSource.h>
 
-#include "RadeonMonitor/ATICard.hpp"
+#include "RadeonCard.hpp"
 
 #include <i386/proc_reg.h>
 #include <libkern/libkern.h>
@@ -41,7 +41,7 @@ public:
 
 private:
     UInt16 nrOfCards = 0;
-    ATICard** atiCards = nullptr;
+    RadeonCard** radeonCards = nullptr;
 };
 
 #endif /* RadeonSensor_hpp */

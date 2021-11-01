@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3299E339272D2A360067FF1C /* RadeonCard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3299E337272D2A360067FF1C /* RadeonCard.hpp */; };
+		3299E33B272D2A490067FF1C /* RadeonCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3299E33A272D2A490067FF1C /* RadeonCard.cpp */; };
 		CA1CAE4226FDD7C1004D7E9A /* RadeonSensorUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */; };
 		CA1CAE4326FDD7C1004D7E9A /* RadeonSensorUserClient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */; };
 		CA1CAE4726FDE16A004D7E9A /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4426FDE049004D7E9A /* Headers */; };
 		CA1CAE4A26FDE45B004D7E9A /* RadeonSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4826FDE45B004D7E9A /* RadeonSensor.cpp */; };
-		CA1CAE4F26FDE87A004D7E9A /* ATICard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4D26FDE87A004D7E9A /* ATICard.cpp */; };
-		CA1CAE5226FDE917004D7E9A /* radeon_chipsets.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE5126FDE8CD004D7E9A /* radeon_chipsets.h */; };
-		CA1CAE5326FDE9AC004D7E9A /* ATICard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4E26FDE87A004D7E9A /* ATICard.hpp */; };
-		CA1CAE5526FDEA03004D7E9A /* radeon_chipinfo_gen.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE5426FDE9F6004D7E9A /* radeon_chipinfo_gen.h */; };
-		CA1CAE5726FDEA60004D7E9A /* atombios.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE5626FDEA44004D7E9A /* atombios.h */; };
 		CA1CAED826FDF91A004D7E9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAED726FDF91A004D7E9A /* AppDelegate.swift */; };
 		CA1CAEDA26FDF925004D7E9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAED926FDF924004D7E9A /* ViewController.swift */; };
 		CA1CAEDC26FDF930004D7E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1CAEDB26FDF930004D7E9A /* Assets.xcassets */; };
@@ -27,15 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3299E337272D2A360067FF1C /* RadeonCard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RadeonCard.hpp; sourceTree = "<group>"; };
+		3299E33A272D2A490067FF1C /* RadeonCard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonCard.cpp; sourceTree = "<group>"; };
+		32F22C0227305D480017B007 /* RadeonChipsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadeonChipsets.h; sourceTree = "<group>"; };
 		CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonSensorUserClient.cpp; sourceTree = "<group>"; };
 		CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RadeonSensorUserClient.hpp; sourceTree = "<group>"; };
 		CA1CAE4426FDE049004D7E9A /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
 		CA1CAE4826FDE45B004D7E9A /* RadeonSensor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonSensor.cpp; sourceTree = "<group>"; };
-		CA1CAE4D26FDE87A004D7E9A /* ATICard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ATICard.cpp; sourceTree = "<group>"; };
-		CA1CAE4E26FDE87A004D7E9A /* ATICard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ATICard.hpp; sourceTree = "<group>"; };
-		CA1CAE5126FDE8CD004D7E9A /* radeon_chipsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = radeon_chipsets.h; sourceTree = "<group>"; };
-		CA1CAE5426FDE9F6004D7E9A /* radeon_chipinfo_gen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = radeon_chipinfo_gen.h; sourceTree = "<group>"; };
-		CA1CAE5626FDEA44004D7E9A /* atombios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = atombios.h; sourceTree = "<group>"; };
 		CA1CAE5826FDF2FD004D7E9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA1CAEC826FDF8FE004D7E9A /* RadeonGadget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadeonGadget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1CAED726FDF91A004D7E9A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,18 +63,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CA1CAE4C26FDE861004D7E9A /* RadeonMonitor */ = {
-			isa = PBXGroup;
-			children = (
-				CA1CAE4E26FDE87A004D7E9A /* ATICard.hpp */,
-				CA1CAE4D26FDE87A004D7E9A /* ATICard.cpp */,
-				CA1CAE5126FDE8CD004D7E9A /* radeon_chipsets.h */,
-				CA1CAE5426FDE9F6004D7E9A /* radeon_chipinfo_gen.h */,
-				CA1CAE5626FDEA44004D7E9A /* atombios.h */,
-			);
-			path = RadeonMonitor;
-			sourceTree = "<group>";
-		};
 		CA1CAEC926FDF8FE004D7E9A /* RadeonGadget */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,8 +90,10 @@
 		CAED2D6F26FDC46500F319D5 /* RadeonSensor */ = {
 			isa = PBXGroup;
 			children = (
-				CA1CAE4C26FDE861004D7E9A /* RadeonMonitor */,
 				CA1CAE4426FDE049004D7E9A /* Headers */,
+				32F22C0227305D480017B007 /* RadeonChipsets.h */,
+				3299E337272D2A360067FF1C /* RadeonCard.hpp */,
+				3299E33A272D2A490067FF1C /* RadeonCard.cpp */,
 				CAC8041927073E920088CC04 /* RadeonSensor.hpp */,
 				CA1CAE4826FDE45B004D7E9A /* RadeonSensor.cpp */,
 				CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */,
@@ -134,13 +119,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA1CAE5726FDEA60004D7E9A /* atombios.h in Headers */,
 				CAC8041A27073E920088CC04 /* RadeonSensor.hpp in Headers */,
-				CA1CAE5526FDEA03004D7E9A /* radeon_chipinfo_gen.h in Headers */,
-				CA1CAE5326FDE9AC004D7E9A /* ATICard.hpp in Headers */,
-				CA1CAE5226FDE917004D7E9A /* radeon_chipsets.h in Headers */,
 				CA1CAE4726FDE16A004D7E9A /* Headers in Headers */,
 				CA1CAE4326FDD7C1004D7E9A /* RadeonSensorUserClient.hpp in Headers */,
+				3299E339272D2A360067FF1C /* RadeonCard.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA1CAE4F26FDE87A004D7E9A /* ATICard.cpp in Sources */,
 				CA1CAE4A26FDE45B004D7E9A /* RadeonSensor.cpp in Sources */,
+				3299E33B272D2A490067FF1C /* RadeonCard.cpp in Sources */,
 				CA1CAE4226FDD7C1004D7E9A /* RadeonSensorUserClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
