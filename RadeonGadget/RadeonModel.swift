@@ -17,7 +17,7 @@ class RadeonModel {
             alertAndQuit(message: "Please download RadeonSensor from the release page.")
         }
         
-        let gadgetVersion = (0, 1)
+        let gadgetVersion = (0, 2)
         
         let kextVersion = getKextVersion()
         if (kextVersion.1 > gadgetVersion.1) {
