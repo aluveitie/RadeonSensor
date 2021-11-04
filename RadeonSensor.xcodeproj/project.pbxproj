@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3299E339272D2A360067FF1C /* RadeonCard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3299E337272D2A360067FF1C /* RadeonCard.hpp */; };
 		3299E33B272D2A490067FF1C /* RadeonCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3299E33A272D2A490067FF1C /* RadeonCard.cpp */; };
+		329CCDA42710C32800C662EE /* SMCRadeonGPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 329CCDA22710C32800C662EE /* SMCRadeonGPU.cpp */; };
+		329CCDA52710C32800C662EE /* SMCRadeonGPU.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 329CCDA32710C32800C662EE /* SMCRadeonGPU.hpp */; };
+		329CCDA82710C64C00C662EE /* KeyImpelemenations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 329CCDA62710C64C00C662EE /* KeyImpelemenations.cpp */; };
+		329CCDA92710C64C00C662EE /* KeyImpelemenations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 329CCDA72710C64C00C662EE /* KeyImpelemenations.hpp */; };
 		CA1CAE4226FDD7C1004D7E9A /* RadeonSensorUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */; };
 		CA1CAE4326FDD7C1004D7E9A /* RadeonSensorUserClient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */; };
 		CA1CAE4726FDE16A004D7E9A /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = CA1CAE4426FDE049004D7E9A /* Headers */; };
@@ -26,6 +30,12 @@
 /* Begin PBXFileReference section */
 		3299E337272D2A360067FF1C /* RadeonCard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RadeonCard.hpp; sourceTree = "<group>"; };
 		3299E33A272D2A490067FF1C /* RadeonCard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonCard.cpp; sourceTree = "<group>"; };
+		329CCD9A2710C04700C662EE /* SMCRadeonGPU.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMCRadeonGPU.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		329CCD9E2710C04700C662EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		329CCDA22710C32800C662EE /* SMCRadeonGPU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SMCRadeonGPU.cpp; sourceTree = "<group>"; };
+		329CCDA32710C32800C662EE /* SMCRadeonGPU.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SMCRadeonGPU.hpp; sourceTree = "<group>"; };
+		329CCDA62710C64C00C662EE /* KeyImpelemenations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyImpelemenations.cpp; sourceTree = "<group>"; };
+		329CCDA72710C64C00C662EE /* KeyImpelemenations.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyImpelemenations.hpp; sourceTree = "<group>"; };
 		32F22C0227305D480017B007 /* RadeonChipsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadeonChipsets.h; sourceTree = "<group>"; };
 		CA1CAE4026FDD7C1004D7E9A /* RadeonSensorUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RadeonSensorUserClient.cpp; sourceTree = "<group>"; };
 		CA1CAE4126FDD7C1004D7E9A /* RadeonSensorUserClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RadeonSensorUserClient.hpp; sourceTree = "<group>"; };
@@ -46,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		329CCD972710C04700C662EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA1CAEC526FDF8FE004D7E9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,6 +80,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		329CCD9B2710C04700C662EE /* SMCRadeonGPU */ = {
+			isa = PBXGroup;
+			children = (
+				329CCDA32710C32800C662EE /* SMCRadeonGPU.hpp */,
+				329CCDA22710C32800C662EE /* SMCRadeonGPU.cpp */,
+				329CCDA72710C64C00C662EE /* KeyImpelemenations.hpp */,
+				329CCDA62710C64C00C662EE /* KeyImpelemenations.cpp */,
+				329CCD9E2710C04700C662EE /* Info.plist */,
+			);
+			path = SMCRadeonGPU;
+			sourceTree = "<group>";
+		};
 		CA1CAEC926FDF8FE004D7E9A /* RadeonGadget */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +112,7 @@
 			children = (
 				CAED2D6D26FDC46500F319D5 /* RadeonSensor.kext */,
 				CA1CAEC826FDF8FE004D7E9A /* RadeonGadget.app */,
+				329CCD9A2710C04700C662EE /* SMCRadeonGPU.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				CAED2D6F26FDC46500F319D5 /* RadeonSensor */,
+				329CCD9B2710C04700C662EE /* SMCRadeonGPU */,
 				CA1CAEC926FDF8FE004D7E9A /* RadeonGadget */,
 				CAED2D6E26FDC46500F319D5 /* Products */,
 			);
@@ -115,6 +146,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		329CCD952710C04700C662EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				329CCDA52710C32800C662EE /* SMCRadeonGPU.hpp in Headers */,
+				329CCDA92710C64C00C662EE /* KeyImpelemenations.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAED2D6826FDC46500F319D5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +169,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		329CCD992710C04700C662EE /* SMCRadeonGPU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 329CCD9F2710C04700C662EE /* Build configuration list for PBXNativeTarget "SMCRadeonGPU" */;
+			buildPhases = (
+				329CCD952710C04700C662EE /* Headers */,
+				329CCD962710C04700C662EE /* Sources */,
+				329CCD972710C04700C662EE /* Frameworks */,
+				329CCD982710C04700C662EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SMCRadeonGPU;
+			productName = SMCRadeonGPU;
+			productReference = 329CCD9A2710C04700C662EE /* SMCRadeonGPU.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
 		CA1CAEC726FDF8FE004D7E9A /* RadeonGadget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA1CAED426FDF8FF004D7E9A /* Build configuration list for PBXNativeTarget "RadeonGadget" */;
@@ -174,6 +232,9 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					329CCD992710C04700C662EE = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					CA1CAEC726FDF8FE004D7E9A = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -196,12 +257,20 @@
 			projectRoot = "";
 			targets = (
 				CAED2D6C26FDC46500F319D5 /* RadeonSensor */,
+				329CCD992710C04700C662EE /* SMCRadeonGPU */,
 				CA1CAEC726FDF8FE004D7E9A /* RadeonGadget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		329CCD982710C04700C662EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA1CAEC626FDF8FE004D7E9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +290,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		329CCD962710C04700C662EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				329CCDA82710C64C00C662EE /* KeyImpelemenations.cpp in Sources */,
+				329CCDA42710C32800C662EE /* SMCRadeonGPU.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA1CAEC426FDF8FE004D7E9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,6 +324,159 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		329CCDA02710C04700C662EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.2.1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
+					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+					"${PROJECT_DIR}/RadeonSensor",
+				);
+				INFOPLIST_FILE = SMCRadeonGPU/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LIBRARY_SEARCH_PATHS = "${PROJECT_DIR}/Lilu.kext/Contents/Resources/Library";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MARKETING_VERSION = 0.2.1;
+				MODULE_NAME = aluveitie.SMCRadeonGPU;
+				MODULE_START = 0;
+				MODULE_STOP = 0;
+				MODULE_VERSION = 1.0.0d1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = aluveitie.SMCRadeonGPU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		329CCDA12710C04700C662EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.2.1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
+					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+					"${PROJECT_DIR}/RadeonSensor",
+				);
+				INFOPLIST_FILE = SMCRadeonGPU/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LIBRARY_SEARCH_PATHS = "${PROJECT_DIR}/Lilu.kext/Contents/Resources/Library";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MARKETING_VERSION = 0.2.1;
+				MODULE_NAME = aluveitie.SMCRadeonGPU;
+				MODULE_START = 0;
+				MODULE_STOP = 0;
+				MODULE_VERSION = 1.0.0d1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = aluveitie.SMCRadeonGPU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
 		CA1CAED526FDF8FF004D7E9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -581,6 +812,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		329CCD9F2710C04700C662EE /* Build configuration list for PBXNativeTarget "SMCRadeonGPU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				329CCDA02710C04700C662EE /* Debug */,
+				329CCDA12710C04700C662EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA1CAED426FDF8FF004D7E9A /* Build configuration list for PBXNativeTarget "RadeonGadget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

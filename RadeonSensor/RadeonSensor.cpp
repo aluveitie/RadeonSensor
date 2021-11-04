@@ -137,6 +137,17 @@ void RadeonSensor::getTemperatures(UInt16 data[]) {
     return;
 }
 
+UInt16 RadeonSensor::getTemperature(UInt16 cardIndex) {
+    if (cardIndex >= nrOfCards) {
+        return 0;
+    }
+    
+    UInt16 temp = 0;
+    RadeonCard* radeonCard = radeonCards[cardIndex];
+    radeonCard->getTemperature(&temp);
+    return temp;
+}
+
 UInt16 RadeonSensor::getNumberOfCards() {
     return nrOfCards;
 }
