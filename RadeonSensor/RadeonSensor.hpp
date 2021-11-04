@@ -35,7 +35,7 @@ public:
     virtual bool start(IOService* provider) override;
     virtual void stop(IOService* provider) override;
     
-    void getTemperatures(UInt16 data[]);
+    UInt16 getTemperature(UInt16 card);
     UInt16 getNumberOfCards();
     
 

@@ -82,7 +82,9 @@ IOReturn RadeonSensorUserClient::externalMethod(uint32_t selector, IOExternalMet
             
             arguments->structureOutputSize = numCards * sizeof(UInt16);
             UInt16 *dataOut = (UInt16*) arguments->structureOutput;
-            mProvider->getTemperatures(dataOut);
+            for (int i = 0; i < numCards; i++) {
+                dataOut[i] = mProvider->getTemperature(i);
+            }
 
             break;
         }

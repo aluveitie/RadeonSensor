@@ -121,20 +121,15 @@ void RadeonSensor::stop(IOService *provider) {
     super::stop(provider);
 }
 
-void RadeonSensor::getTemperatures(UInt16 data[]) {
-    if (nrOfCards == 0) {
-        IOLog("RadeonSensor no GPU were found");
-        return;
+UInt16 RadeonSensor::getTemperature(UInt16 card) {
+    if (card >= nrOfCards) {
+        return 0;
     }
     
-    for (int i = 0; i < nrOfCards; i++) {
-        UInt16 temp = 0;
-        RadeonCard* radeonCard = radeonCards[i];
-        radeonCard->getTemperature(&temp);
-        data[i] = temp;
-    }
-    
-    return;
+    UInt16 temp = 0;
+    RadeonCard* radeonCard = radeonCards[card];
+    radeonCard->getTemperature(&temp);
+    return temp;
 }
 
 UInt16 RadeonSensor::getNumberOfCards() {
