@@ -23,6 +23,8 @@ class EXPORT SMCRadeonGPU : public IOService {
     
     static constexpr SMC_KEY KeyTGxP(size_t i) { return SMC_MAKE_IDENTIFIER('T','G',KeyIndexes[i],'P'); }
     static constexpr SMC_KEY KeyTGxD(size_t i) { return SMC_MAKE_IDENTIFIER('T','G',KeyIndexes[i],'D'); }
+    static constexpr SMC_KEY KeyTGxp(size_t i) { return SMC_MAKE_IDENTIFIER('T','G',KeyIndexes[i],'p'); }
+    static constexpr SMC_KEY KeyTGxd(size_t i) { return SMC_MAKE_IDENTIFIER('T','G',KeyIndexes[i],'d'); }
     
     
     VirtualSMCAPI::Plugin vsmcPlugin {
