@@ -1,4 +1,6 @@
-# RadeonSensor - Kext and Gadget to show Radeon GPU temperature on MacOS
+# RadeonSensor - Kext and Gadget to show Radeon GPU temperature on macOS
+
+[![GitHub release](https://img.shields.io/github/release/Aluveitie/RadeonSensor?include_prereleases=&sort=semver&color=blue)](https://github.com/Aluveitie/RadeonSensor/releases/) [![download-badge](https://img.shields.io/github/downloads/aluveitie/RadeonSensor/total.svg?style=flat-square "Download status")](https://github.com/aluveitie/RadeonSensor/releases/latest "Download status")
 
 ![](./imgs/icon.png)
 
