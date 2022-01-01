@@ -21,9 +21,10 @@ Starting with the Radeon VII, Apple stopped reporting the temperature directly, 
 
 All GPUs starting Radeon HD 7000 series up to the RX 6000 series are supported.
 
-
-Cedits
-* [FakeSMC3](https://github.com/CloverHackyColor/FakeSMC3_with_plugins)
-* [SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)
+<br/>
 
 ![](./imgs/status_bar.png)
+
+### Credits
+* [FakeSMC3](https://github.com/CloverHackyColor/FakeSMC3_with_plugins)
+* [SMCAMDProcessor](https://github.com/trulyspinach/SMCAMDProcessor)
