@@ -62,9 +62,9 @@ IOReturn RadeonCard::getTemperature(UInt16* data) {
 }
 
 bool RadeonCard::initializeFamily(UInt32 chipID) {
-    UInt16 devID = chipID & 0xffff;
+    UInt16 devID = chipID & 0xFFFF;
     // Vega/Navi
-    if (((devID == 0x66af)) || //Vega 20
+    if (((devID >= 0x66A0) && (devID <= 0x66AF)) || //Vega 20
         ((devID >= 0x6860) && (devID <= 0x687F)) || //Vega 10
         ((devID >= 0x7301) && (devID <= 0x73FF)) //Navi 10,12,14,21,22,23
         ) {
