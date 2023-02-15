@@ -49,7 +49,12 @@ IOService *SMCRadeonGPU::probe(IOService *provider, SInt32 *score) {
         suc &= VirtualSMCAPI::addKey(KeyTGxP(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
         suc &= VirtualSMCAPI::addKey(KeyTGxd(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
         suc &= VirtualSMCAPI::addKey(KeyTGxp(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+        if (i == 0) {
+            suc &= VirtualSMCAPI::addKey(KeyTGDD, vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+        }
     }
+
+    qsort(const_cast<VirtualSMCKeyValue *>(vsmcPlugin.data.data()), vsmcPlugin.data.size(), sizeof(VirtualSMCKeyValue), VirtualSMCKeyValue::compare);
     
     if (!suc) {
         os_log(OS_LOG_DEFAULT, "SMCRadeonGPU setting up SMC keys failed");
