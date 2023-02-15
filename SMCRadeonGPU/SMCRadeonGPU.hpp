@@ -8,12 +8,16 @@
 #ifndef SMCRadeonGPU_hpp
 #define SMCRadeonGPU_hpp
 
+#undef EFIAPI
+
 #include <IOKit/IOLib.h>
 
 #include <RadeonSensor.hpp>
 
 #include <VirtualSMCSDK/kern_vsmcapi.hpp>
-#include <VirtualSMCSDK/AppleSmc.h>
+//#include <VirtualSMCSDK/AppleSmc.h>
+#define SMC_MAKE_IDENTIFIER(A, B, C, D) ((UINT32)(((UINT32)(D) << 24U) | ((UINT32)(C) << 16U) | ((UINT32)(B) << 8U) | (UINT32)(A)))
+#define SMC_MAKE_KEY_TYPE(A, B, C, D) SMC_MAKE_IDENTIFIER ((A), (B), (C), (D))
 
 class EXPORT SMCRadeonGPU : public IOService {
     OSDeclareDefaultStructors(SMCRadeonGPU)

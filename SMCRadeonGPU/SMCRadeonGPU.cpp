@@ -14,7 +14,9 @@
 
 OSDefineMetaClassAndStructors(SMCRadeonGPU, IOService);
 
-
+enum {
+    MySmcKeyTypeSp78 = SMC_MAKE_KEY_TYPE ('s', 'p', '7', '8'),
+};
 
 bool SMCRadeonGPU::init(OSDictionary *dictionary) {
     if (!IOService::init(dictionary)) {
@@ -45,12 +47,12 @@ IOService *SMCRadeonGPU::probe(IOService *provider, SInt32 *score) {
     auto gpuCount = fProvider->getNumberOfCards();
     bool suc = true;
     for (auto i = 0; i < gpuCount; i++) {
-        suc &= VirtualSMCAPI::addKey(KeyTGxD(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
-        suc &= VirtualSMCAPI::addKey(KeyTGxP(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
-        suc &= VirtualSMCAPI::addKey(KeyTGxd(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
-        suc &= VirtualSMCAPI::addKey(KeyTGxp(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+        suc &= VirtualSMCAPI::addKey(KeyTGxD(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, MySmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+        suc &= VirtualSMCAPI::addKey(KeyTGxP(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, MySmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+        suc &= VirtualSMCAPI::addKey(KeyTGxd(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, MySmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+        suc &= VirtualSMCAPI::addKey(KeyTGxp(i), vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, MySmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
         if (i == 0) {
-            suc &= VirtualSMCAPI::addKey(KeyTGDD, vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, SmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
+            suc &= VirtualSMCAPI::addKey(KeyTGDD, vsmcPlugin.data, VirtualSMCAPI::valueWithSp(0, MySmcKeyTypeSp78, new GPUTempProvider(fProvider, i)));
         }
     }
 

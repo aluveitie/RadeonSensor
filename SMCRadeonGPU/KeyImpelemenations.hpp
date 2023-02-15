@@ -8,9 +8,11 @@
 #ifndef KeyImpelemenations_hpp
 #define KeyImpelemenations_hpp
 
+#undef EFIAPI
+
 #include <libkern/libkern.h>
 #include <VirtualSMCSDK/kern_vsmcapi.hpp>
-#include <VirtualSMCSDK/AppleSmc.h>
+//#include <VirtualSMCSDK/AppleSmc.h>
 
 #include "SMCRadeonGPU.hpp"
 
