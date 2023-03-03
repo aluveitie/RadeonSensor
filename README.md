@@ -19,7 +19,7 @@ Starting with the Radeon VII, Apple stopped reporting the temperature directly, 
 
 ## Supported GPUs
 
-All GPUs starting Radeon HD 7000 series up to the RX 6000 series are supported.
+All GPUs starting Radeon HD 7000 series up to the RX 6000 series are supported on macOS 10.15 and newer.
 
 <br/>
 
